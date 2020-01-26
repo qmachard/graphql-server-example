@@ -5,6 +5,7 @@ schema {
 
 type Query {
     feed: [Link!]!
+    allUsers: [User!]!
     info: String!
 }
 
