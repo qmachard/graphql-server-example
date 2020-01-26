@@ -46,3 +46,7 @@ $ yarn start
 Now you can go on http://localhost:4000/
 
 Enjoy !
+
+## Source
+
+* Thanks to (HowToGraphQL)[https://www.howtographql.com/]
