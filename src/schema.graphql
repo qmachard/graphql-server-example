@@ -4,7 +4,7 @@ schema {
 }
 
 type Query {
-    feed: [Link!]!
+    feed(filter: String): [Link!]!
     allUsers: [User!]!
     info: String!
 }
