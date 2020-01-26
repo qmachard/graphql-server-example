@@ -49,4 +49,4 @@ Enjoy !
 
 ## Source
 
-* Thanks to (HowToGraphQL)[https://www.howtographql.com/]
+* Thanks to [HowToGraphQL](https://www.howtographql.com/)
