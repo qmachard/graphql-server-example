@@ -1,4 +1,13 @@
-# GraphQL Tutorial
+# Example Server for GraphQL
+
+Simple example of GraphQL Server with authentication, using Node.js with GraphQL Yoga and Prisma. 
+
+## Dependencies
+
+* [GraphQL Yoga](https://github.com/prisma-labs/graphql-yoga)
+* [Prisma](https://www.prisma.io/)
+* [JWT](https://github.com/auth0/node-jsonwebtoken#readme)
+* [bcrypt](https://github.com/kelektiv/node.bcrypt.js#readme)
 
 ## Installation
 
