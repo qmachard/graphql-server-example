@@ -52,6 +52,14 @@ const deleteLink = async (parent, args, context) => {
 };
 
 const signup = async (parent, args, context) => {
+  const userExists = await context.prisma.$exists.user({
+    email: args.email,
+  });
+
+  if (userExists) {
+    throw new Error('User already exists');
+  }
+
   const password = await bcrypt.hash(args.password, 10);
 
   const user = await context.prisma.createUser({
