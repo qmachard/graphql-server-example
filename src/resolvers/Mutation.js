@@ -13,8 +13,17 @@ const addLink = (root, args, context) => {
   });
 };
 
-const updateLink = (root, args, context) => {
-  // TODO: Update link can be possible only by user who has posted
+const updateLink = async (root, args, context) => {
+  const userId = getUserId(context);
+
+  const link = context.prisma.link({
+    id: args.id,
+  });
+
+  if (await link.postedBy().id() !== userId) {
+    throw new Error('You don\'t have permission to update this link');
+  }
+
   return context.prisma.updateLink({
     data: {
       description: args.description,
@@ -26,8 +35,17 @@ const updateLink = (root, args, context) => {
   });
 };
 
-const deleteLink = (parent, args, context) => {
-  // TODO: Delete link can be possible only by user who has posted
+const deleteLink = async (parent, args, context) => {
+  const userId = getUserId(context);
+
+  const link = context.prisma.link({
+    id: args.id,
+  });
+
+  if (await link.postedBy().id() !== userId) {
+    throw new Error('You don\'t have permission to update this link');
+  }
+
   return context.prisma.deleteLink({
     id: args.id,
   });
