@@ -1,4 +1,4 @@
-# Example Server for GraphQL
+# GraphQL Server Example
 
 Simple example of GraphQL Server with authentication, using Node.js with GraphQL Yoga and Prisma. 
 
