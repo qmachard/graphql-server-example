@@ -1,16 +1,20 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-const {APP_SECRET} = require('../utils');
+const {APP_SECRET, getUserId} = require('../utils');
 
 const addLink = (root, args, context) => {
+  const userId = getUserId(context);
+
   return context.prisma.createLink({
     url: args.url,
     description: args.description,
-  })
+    postedBy: { connect: { id: userId } },
+  });
 };
 
 const updateLink = (root, args, context) => {
+  // TODO: Update link can be possible only by user who has posted
   return context.prisma.updateLink({
     data: {
       description: args.description,
@@ -23,6 +27,7 @@ const updateLink = (root, args, context) => {
 };
 
 const deleteLink = (parent, args, context) => {
+  // TODO: Delete link can be possible only by user who has posted
   return context.prisma.deleteLink({
     id: args.id,
   });
