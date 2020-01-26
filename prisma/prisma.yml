@@ -1,0 +1,8 @@
+#endpoint: ''
+endpoint: https://eu1.prisma.sh/quentin-machard-b18fff/hackernews-node/dev
+
+datamodel: datamodel.prisma
+
+generate:
+  - generator: javascript-client
+    output: ../src/generated/prisma-client
