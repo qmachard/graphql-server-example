@@ -3,19 +3,34 @@ schema {
     mutation: Mutation
 }
 
-type Link {
-    description: String!
-    id: ID!
-    url: String!
+type Query {
+    feed: [Link!]!
+    info: String!
 }
 
 type Mutation {
+    signup(email: String!, password: String!, name: String!): AuthPayload
+    login(email: String!, password: String!): AuthPayload
     addLink(url: String!, description: String!): Link!
     updateLink(id: ID!, url: String, description: String): Link
     deleteLink(id: ID!): Link
 }
 
-type Query {
-    feed: [Link!]!
-    info: String!
+type Link {
+    description: String!
+    id: ID!
+    url: String!
+    postedBy: User
+}
+
+type AuthPayload {
+    token: String
+    user: User
+}
+
+type User {
+    id: ID!
+    name: String!
+    email: String!
+    links: [Link!]!
 }
