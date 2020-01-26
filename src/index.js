@@ -1,42 +1,14 @@
 const { GraphQLServer } = require('graphql-yoga');
 const { prisma } = require('./generated/prisma-client');
 
+const Query = require("./resolvers/Query");
+const Mutation = require("./resolvers/Mutation");
+const Link = require("./resolvers/Link");
+
 const resolvers = {
-  Query: {
-    info: () => 'Hello World!',
-    feed: (root, args, context) => {
-      return context.prisma.links();
-    },
-  },
-  Mutation: {
-    addLink: (root, args, context) => {
-      return context.prisma.createLink({
-        url: args.url,
-        description: args.description,
-      })
-    },
-    updateLink: (root, args, context) => {
-      return context.prisma.updateLink({
-        data: {
-          description: args.description,
-          url: args.url,
-        },
-        where: {
-          id: args.id,
-        }
-      });
-    },
-    deleteLink: (parent, args, context) => {
-      return context.prisma.deleteLink({
-        id: args.id,
-      });
-    }
-  },
-  Link: {
-    id: parent => parent.id,
-    description: parent => parent.description,
-    url: parent => parent.url,
-  }
+  Query,
+  Mutation,
+  Link,
 };
 
 const server = new GraphQLServer({
