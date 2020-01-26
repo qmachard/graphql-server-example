@@ -10,9 +10,16 @@ const postedBy = (parent, args, context) => {
   }).postedBy();
 };
 
+const votes = (parent, args, context) => {
+  return context.prisma.link({
+    id: parent.id,
+  }).votes();
+};
+
 module.exports = {
   id,
   description,
   url,
   postedBy,
+  votes,
 };
